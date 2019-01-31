@@ -9,7 +9,8 @@ const defaultState = {
         { id: 4, name: 'mouse4', price: 4000, quantity: 0 },
         { id: 5, name: 'mouse5', price: 5000, quantity: 0 },
     ],
-    list_item: []
+    list_item: [],
+    isLogin:false
 }
 
 const Store = createStore(reducer, defaultState);

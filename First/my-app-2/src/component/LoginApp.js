@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { login } from '../action/Action'
+
 class LoginApp extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isLogin: false,
             error: false
         }
     }
@@ -13,9 +15,9 @@ class LoginApp extends Component {
         // Authenticate login user
         if (this.refs.user.value === 'cuongnq' && this.refs.pass.value === '1') {
             this.setState({
-                isLogin: !this.state.isLogin,
                 error: false
             })
+            this.props.handleLogin()
         } else {
             this.setState({
                 error: !this.state.error
@@ -24,7 +26,8 @@ class LoginApp extends Component {
     }
 
     render() {
-        const { isLogin, error } = this.state
+        const { isLogin } = this.props
+        const { error } = this.state
         return (
             <div>
                 {/* Show error msg when wrong user */}
@@ -49,4 +52,15 @@ class LoginApp extends Component {
     }
 }
 
-export default LoginApp;
+export default connect(
+    (state) => {
+        return {
+            isLogin: state.isLogin
+        }
+    },
+    (dispatch) => {
+        return {
+            handleLogin: () => dispatch(login())
+        }
+    }
+)(LoginApp);

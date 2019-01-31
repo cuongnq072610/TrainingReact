@@ -2,16 +2,11 @@ import React, { Component } from 'react';
 import Item from './Item';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { logout } from '../action/Action'
 
 class Menu extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isLogin: false
-        }
-    }
     render() {
-        var {isLogin} = this.state
+        var { isLogin } = this.props
         return (
             <div className='container'>
                 {isLogin ?
@@ -22,6 +17,12 @@ class Menu extends Component {
                         <button className='btn btn-outline-secondary'>Login</button>
                     </Link>
                 }
+                {isLogin ?
+                    <button className='btn btn-outline-secondary'
+                        onClick={this.props.handleLogout}>Logout</button> :
+                    <div></div>
+                }
+
                 <table className='table' style={{ margin: 50 }}>
                     <thead>
                         <tr>
@@ -33,7 +34,7 @@ class Menu extends Component {
                     </thead>
                     <tbody>
                         {this.props.leftList.map(item => {
-                            return <Item key={item.id} item={item} isLogin={this.state.isLogin}/>
+                            return <Item key={item.id} item={item} isLogin={this.props.isLogin} />
                         })}
                     </tbody>
                 </table>
@@ -45,7 +46,13 @@ class Menu extends Component {
 export default connect(
     (state) => {
         return {
-            leftList: state.left_item
+            leftList: state.left_item,
+            isLogin: state.isLogin
+        }
+    },
+    (dispatch) => {
+        return {
+            handleLogout: () => dispatch(logout())
         }
     }
 )(Menu);

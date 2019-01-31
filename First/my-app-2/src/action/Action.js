@@ -11,3 +11,15 @@ export const deleteItem = (item) => {
         item
     }
 }
+
+export const login = () => {
+    return {
+        type: 'LOGIN'
+    }
+}
+
+export const logout = () => {
+    return {
+        type: 'LOGOUT'
+    }
+}

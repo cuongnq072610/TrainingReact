@@ -27,6 +27,12 @@ const reducer = (state , action) => {
             })
             return {...state, list_item: updateList}
         }
+        case 'LOGIN': {
+            return {...state, isLogin: true}
+        }
+        case 'LOGOUT': {
+            return {...state, isLogin: false}
+        }
         default: 
             return state;
     }
