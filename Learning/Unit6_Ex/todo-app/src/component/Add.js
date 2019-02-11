@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { AddTodo } from './Action';
+import { AddTodo } from '../actions/Action';
  
 class Add extends Component {
     HandleSubmit(e){

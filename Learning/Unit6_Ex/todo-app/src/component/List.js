@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Todo from './Todo';
-
+import Done from './Done';
 class List extends Component {
     render() {
         return (
@@ -12,6 +12,13 @@ class List extends Component {
                             return <Todo key={index} todo={item} />
                         }):''}
                 </ul>
+                <hr/>
+                <ul>
+                    {this.props.done ?
+                        this.props.done.map((item,index) => {
+                            return <Done key={index} todo={item} />
+                        }):''}
+                </ul>
             </div>
         );
     }
@@ -19,7 +26,8 @@ class List extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        list: state.todos
+        list: state.todos,
+        done: state.done
     }
 }
 

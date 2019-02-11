@@ -9,3 +9,10 @@ export function AddTodo(text){
         }
     }
 }
+
+export const CheckDone = (id) =>{
+    return {
+        type: "CHECK",
+        id
+    }
+}
