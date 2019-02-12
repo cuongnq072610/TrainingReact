@@ -29,3 +29,7 @@
     - Test Exception
         +toThrow()
     - DOM testing we use enzyme
+# 2.Snapshot Testing
+### 2.1.Define
+    - Testing for component to check if the component has been changed
+    - It will check with one file's name is snapshot. The file will create for the first time run test. 

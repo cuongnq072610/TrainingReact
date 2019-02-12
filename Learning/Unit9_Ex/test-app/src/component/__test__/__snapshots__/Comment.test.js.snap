@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`render correctly 1`] = `
+<div>
+  <form>
+    <h4>
+      Comment Box
+    </h4>
+    <textarea />
+    <div>
+      <button>
+        Send Comment
+      </button>
+    </div>
+  </form>
+</div>
+`;

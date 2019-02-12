@@ -8,7 +8,7 @@ it('Test App Component', () => {
   const div = document.createElement('div')
 
   ReactDom.render(<App />, div)
-  expect(div.textContent).toEqual('App ComponentComment BoxSend Comment')
+  expect(div.textContent).toEqual('App ComponentComment BoxHelloWorldSend Comment')
   ReactDom.unmountComponentAtNode(div)
 })
 
