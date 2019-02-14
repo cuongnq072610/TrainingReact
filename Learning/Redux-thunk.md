@@ -27,7 +27,9 @@
     * Note:- Phải hiểu cơ chế của Generator function của ES6
            - https://viblo.asia/p/generator-trong-javasccript-WEMGBjjVGQK
     - Với redux-saga , đơn giản bạn chỉ cần track theo try/catch block để theo dõi dòng code, bên cạnh đó còn có hàm giúp bạn track các action một cách dễ dàng.
-### 3.2.Basic Helper
+### 3.2.Usage
+    Đối với logic của saga, ta cung cấp một hàm cho saga, chính hàm này là hàm đứng ra xem xét các action trước khi vào store, nếu là action quan tâm thì nó sẽ thực thi hàm sẽ được thực thi, nếu bạn biết khái niệm hook thì hàm cung cấp cho saga chính là hàm hook. Điều đặc biệt của hàm hook này nó là một generator function, trong generator function này có yield và mỗi khi yield ta sẽ trả về một plain object. Object trả về đó được gọi Effect object. effect object này đơn giản chỉ là một object bình thường nhưng chứa thông tin đặc biệt dùng để chỉ dẫn middleware của Redux thực thi các hoạt động khác ví dụ như gọi một hàm async khác hay put một action tới store. Để tạo ra effect object đề cập ở trên thì ta gọi hàm từ thư viện của saga là redux-saga/effects.
+### 3.3.Basic Helper
     -Fork: thực hiện một hoạt động non-blocking trên function được truyền cho nó.
     -Take: tạm dừng cho đến khi nhận được action
     -Race: chạy nhiều effect đồng thời, sau đó hủy tất cả nếu một trong số đó kết thúc.
@@ -36,5 +38,5 @@
     -Select: chạy một selector function để lấy data từ state.
     -takeLatest: có nghĩa là nếu chúng ta thực hiện một loạt các actions, nó sẽ chỉ thực thi và trả lại kết quả của của actions cuối cùng.
     -takeEvery: thực thi và trả lại kết quả của mọi actions được gọi.
-### 3.3.Example
+### 3.4.Example
     https://viblo.asia/p/redux-saga-gAm5yqLA5db
