@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { addItem, deleteItem } from '../action/Action';
 class Item extends Component {
     render() {
-        console.log(this.props.isLogin)
         return (
             <tr>
                 <td>{this.props.item.id}</td>

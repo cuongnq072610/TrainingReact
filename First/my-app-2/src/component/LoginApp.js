@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login } from '../action/Action'
 
@@ -17,7 +17,7 @@ class LoginApp extends Component {
             this.setState({
                 error: false
             })
-            this.props.handleLogin()
+            this.props.handleLogin(this.refs.user.value)
         } else {
             this.setState({
                 error: !this.state.error
@@ -29,7 +29,7 @@ class LoginApp extends Component {
         const { isLogin } = this.props
         const { error } = this.state
         return (
-            <div>
+            <div className='container'>
                 {/* Show error msg when wrong user */}
                 {error ? <h4>Wrong User</h4> : ""}
                 {/* Check if login or not
@@ -44,6 +44,7 @@ class LoginApp extends Component {
                             <input type='password' placeholder='Password' ref='pass' required />
                             <br />
                             <input type='submit' value='Login' />
+                            <Link to='/'><span style={{marginLeft:10}}>Cancel</span></Link>
                         </form>
                         <br />
                     </div> : <Redirect to='/' />}
@@ -60,7 +61,7 @@ export default connect(
     },
     (dispatch) => {
         return {
-            handleLogin: () => dispatch(login())
+            handleLogin: (user) => dispatch(login(user))
         }
     }
 )(LoginApp);

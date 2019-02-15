@@ -12,9 +12,10 @@ export const deleteItem = (item) => {
     }
 }
 
-export const login = () => {
+export const login = (user) => {
     return {
-        type: 'LOGIN'
+        type: 'LOGIN',
+        user
     }
 }
 

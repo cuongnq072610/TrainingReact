@@ -1,5 +1,8 @@
-import { createStore } from 'redux';
-import reducer from '../reducer/Reducer';
+import { createStore, applyMiddleware } from 'redux';
+import rootReducer from '../reducer/Reducer';
+
+import createMiddlewareSaga from 'redux-saga'
+import rootSaga from '../sagas/sagas'
 
 const defaultState = {
     left_item: [
@@ -10,9 +13,15 @@ const defaultState = {
         { id: 5, name: 'mouse5', price: 5000, quantity: 0 },
     ],
     list_item: [],
-    isLogin:false
+    total: 0,
+    user:'',
+    isLogin: false,
+    isPaying: false,
+    isErr: false
 }
 
-const Store = createStore(reducer, defaultState);
+const sagaMiddleware = createMiddlewareSaga()
 
+const Store = createStore(rootReducer, defaultState, applyMiddleware(sagaMiddleware));
+sagaMiddleware.run(rootSaga)
 export default Store;

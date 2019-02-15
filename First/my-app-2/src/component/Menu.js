@@ -10,19 +10,20 @@ class Menu extends Component {
         return (
             <div className='container'>
                 {isLogin ?
-                    <Link to='/Cart'>
-                        <button className='btn btn-outline-secondary'>Cart</button>
-                    </Link> :
+                    <div>
+                        <Link to='/Cart'>
+                            <button className='btn btn-outline-secondary'>Cart</button>
+                        </Link>
+                        <button className='btn btn-outline-secondary'
+                            onClick={this.props.handleLogout}>Logout</button>
+                            <span style={{float:'right'}}>Hello, {this.props.user}</span>
+                    </div>
+                    :
                     <Link to='/Login'>
                         <button className='btn btn-outline-secondary'>Login</button>
                     </Link>
                 }
-                {isLogin ?
-                    <button className='btn btn-outline-secondary'
-                        onClick={this.props.handleLogout}>Logout</button> :
-                    <div></div>
-                }
-
+                <h2>Simple Shopping Page</h2>
                 <table className='table' style={{ margin: 50 }}>
                     <thead>
                         <tr>
@@ -47,7 +48,8 @@ export default connect(
     (state) => {
         return {
             leftList: state.left_item,
-            isLogin: state.isLogin
+            isLogin: state.isLogin,
+            user: state.user
         }
     },
     (dispatch) => {
