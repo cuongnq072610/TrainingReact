@@ -13,9 +13,13 @@ function* fetchData() {
     }
 }
 
+function* watcherFetch(){
+    yield takeLatest(FETCHING_DATA, fetchData)
+}
+
 function* rootSaga(){
     console.log('2')
-    yield takeLatest(FETCHING_DATA, fetchData)
+    yield watcherFetch()
 }
 
 export default rootSaga
