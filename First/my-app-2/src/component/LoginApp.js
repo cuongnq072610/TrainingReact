@@ -20,7 +20,7 @@ class LoginApp extends Component {
             this.props.handleLogin(this.refs.user.value)
         } else {
             this.setState({
-                error: !this.state.error
+                error: true
             })
         }
     }
