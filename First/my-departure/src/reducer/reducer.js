@@ -9,14 +9,14 @@ const initState = {
 const reducer = (state = initState, action) => {
     switch(action.type){
         case FETCH_DATA_SUCCESS:{
-            return {...state, user: action.user, flight: action.flight, forecast: action.forecast}
+            return {...state, flight: action.flight, forecast: action.forecast}
         }
         case FETCH_DATA_FAILURE:{
             return {...state, error: action.error}
         }
-        // case 'GET_USER':{
-        //     return {...state, user: action.user}
-        // }
+        case 'GET_USER':{
+            return {...state, user: action.user}
+        }
         default: 
             return state 
     }
